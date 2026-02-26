@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Login Security Demo</title>
+
+<style>
+
+body {
+
+    font-family: Arial;
+
+    text-align: center;
+
+    padding-top: 100px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+
+<h2>Secure Login System</h2>
+
+
+
+<input type="password" id="password" placeholder="Enter Password">
+
+<button onclick="login()">Login</button>
+
+
+
+<p id="message"></p>
+
+
+
+<script>
+
+let attempts = 3;
+
+const correctPassword = "admin123";
+
+
+
+function login() {
+
+    let password = document.getElementById("password").value;
+
+    let message = document.getElementById("message");
+
+
+
+    if (attempts <= 0) {
+
+        message.innerHTML = "Account Locked (Too many attempts)";
+
+        return;
+
+    }
+
+
+
+    if (password === correctPassword) {
+
+        message.innerHTML = "Login Successful";
+
+    } else {
+
+        attempts--;
+
+        if (attempts > 0) {
+
+            message.innerHTML = "Wrong Password. Attempts left: " + attempts;
+
+        } else {
+
+            message.innerHTML = "Account Locked (Brute Force Protection)";
+
+        }
+
+    }
+
+}
+
+</script>
+
+
+
+</body>
+
+</html>
+
+
